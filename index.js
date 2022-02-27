@@ -1,19 +1,19 @@
-const express = require("express");
-const cors = require("cors");
-const mongo = require('./shared/connect');
-const {Studentsignin,signup} = require('./modules/registermodule');
-const app = express();
+const express = require('express')
+const cors = require('cors')
 
-app.use(cors());
-app.use(express.json());
-mongo.connect();
+const mongo = require('./db')
+const { signup, signin } = require('./modules/modules')
+const app =express()
 
+app.use(cors())
+app.use(express.json())
+
+mongo.connect()
 app.get('/',(req,res)=>{
-    res.send('Home')
+   res.send("Home Page")
 })
-app.post('/signin',Studentsignin);
-app.post('/signup',signup); 
-
+app.post('/signup',signup);
+app.post('/signin',signin);
 app.listen(process.env.PORT || 8000,()=>{
-    console.log("Started");
+   console.log("Started");
 })
