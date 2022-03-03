@@ -14,7 +14,7 @@ app.get('/',(req,res)=>{
 })
 app.post('/signup',signup);
 app.post('/task',task)
-app.post('/task1',task1)
+app.get('/task1',task1)
 app.post('/signin',signin);
 app.listen(process.env.PORT || 8000,()=>{
    console.log("Started");
